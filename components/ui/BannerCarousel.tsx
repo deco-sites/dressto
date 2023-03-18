@@ -19,11 +19,11 @@ export interface Banner {
     /** @description when user clicks on the image, go to this link */
     href: string;
     /** @description Image text title */
-    title: string;
+    title?: string;
     /** @description Image text subtitle */
-    subTitle: string;
+    subTitle?: string;
     /** @description Button label */
-    label: string;
+    label?: string;
   };
 }
 
@@ -43,7 +43,6 @@ export interface Props {
 function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
   const {
     alt,
-    mobile,
     desktop,
     action,
   } = image;
@@ -52,13 +51,6 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
     <div class="relative h-[600px] min-w-[100vw] overflow-y-hidden">
       <a href={action?.href ?? "#"} aria-label={action?.label}>
         <Picture class="w-full" preload={lcp}>
-          <Source
-            media="(max-width: 767px)"
-            fetchPriority={lcp ? "high" : "auto"}
-            src={mobile}
-            width={360}
-            height={600}
-          />
           <Source
             media="(min-width: 768px)"
             fetchPriority={lcp ? "high" : "auto"}
@@ -75,8 +67,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
         </Picture>
         {action && (
           <div
-            class="absolute top-0 bottom-0 m-auto left-0 right-0 sm:right-auto sm:left-[12%] max-h-min max-w-[235px] flex flex-col gap-4 bg-hover-inverse p-4 rounded"
-            style={{ backdropFilter: "blur(8px)" }}
+            class="absolute top-0 bottom-0 m-auto left-0 right-0 sm:right-auto sm:left-[12%] max-h-min max-w-[235px] flex flex-col gap-4 p-4 rounded"
           >
             <Text variant="heading-1" tone="default-inverse">
               {action.title}
@@ -84,7 +75,6 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
             <Text variant="heading-3" tone="default-inverse">
               {action.subTitle}
             </Text>
-            <Button variant="secondary">{action.label}</Button>
           </div>
         )}
       </a>
@@ -191,10 +181,6 @@ function BannerCarousel({ images, preload, interval }: Props) {
           <BannerItem image={image} lcp={index === 0 && preload} />
         ))}
       </Slider>
-
-      <Controls />
-
-      <Dots images={images} interval={interval} />
 
       <SliderControllerJS rootId={id} interval={interval && interval * 1e3} />
     </div>
