@@ -79,18 +79,18 @@ function MenuItem({ item, level = 0 }: { item: INavItem; level?: number }) {
 function Menu({ items }: Props) {
   return (
     <>
-      <ul class="px-4 flex-grow flex flex-col divide-y divide-default">
+      <ul class="px-4 pt-8 flex-grow flex flex-col h-3/6">
         {items.map((item) => <MenuItem item={item} />)}
       </ul>
-
-      <ul class="flex flex-col py-2 bg-hover">
+      <span class="border-b-1 border-gray-200 w-11/12 self-center"></span>
+      <ul class="flex flex-col self-start bg-default h-3/6 pt-4">
         <li>
           <a
             class="flex items-center gap-4 px-4 py-2"
             href="https://www.deco.cx"
           >
-            <Icon id="Heart" width={20} height={20} strokeWidth={2} />
-            <Text variant="caption">Lista de desejos</Text>
+            <Icon id="Heart" width={20} height={20} strokeWidth={1} />
+            <Text variant="caption">Wishlist</Text>
           </a>
         </li>
         <li>
@@ -98,7 +98,7 @@ function Menu({ items }: Props) {
             class="flex items-center gap-4 px-4 py-2"
             href="https://www.deco.cx"
           >
-            <Icon id="MapPin" width={20} height={20} strokeWidth={2} />
+            <Icon id="MapPin" width={20} height={20} strokeWidth={1} />
             <Text variant="caption">Nossas lojas</Text>
           </a>
         </li>
@@ -107,8 +107,8 @@ function Menu({ items }: Props) {
             class="flex items-center gap-4 px-4 py-2"
             href="https://www.deco.cx"
           >
-            <Icon id="Phone" width={20} height={20} strokeWidth={2} />
-            <Text variant="caption">Fale conosco</Text>
+            <Icon id="Phone" width={20} height={20} strokeWidth={1} />
+            <Text variant="caption">Cashback</Text>
           </a>
         </li>
         <li>

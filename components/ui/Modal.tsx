@@ -60,19 +60,19 @@ const Modal = ({
     <dialog
       {...props}
       ref={ref}
-      class={`bg-transparent p-0 m-0 max-w-full sm:max-w-lg w-full max-h-full h-full backdrop ${variant} ${
+      class={`bg-transparent p-0 m-0 max-w-full sm:max-w-lg w-11/12 max-h-full h-full backdrop ${variant} ${
         props.class ?? ""
       }`}
       onClick={(e) =>
         (e.target as HTMLDialogElement).tagName === "DIALOG" && onClose?.()}
     >
-      <section class="pt-6 h-full bg-default flex flex-col">
-        <header class="flex px-4 justify-between items-center pb-6 border-b-1 border-default">
+      <section class="pt-5 h-full bg-default flex flex-col px-2 ">
+        <header class="flex px-4 justify-between items-start pb-3 border-b-1 border-default">
           <h1>
             <Text variant="heading-2">{title}</Text>
           </h1>
           <Button variant="icon" onClick={onClose}>
-            <Icon id="XMark" width={20} height={20} strokeWidth={2} />
+            <Icon id="XMark" width={30} height={30} strokeWidth={1} />
           </Button>
         </header>
         <div class="overflow-y-auto h-full flex flex-col">
