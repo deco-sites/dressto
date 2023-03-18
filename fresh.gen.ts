@@ -988,7 +988,10 @@ const manifest: DecoManifest = {
         "type": "object",
         "properties": {
           "title": {
-            "type": "string",
+            "type": [
+              "string",
+              "null",
+            ],
             "title": "Title",
           },
           "products": {
@@ -1006,7 +1009,6 @@ const manifest: DecoManifest = {
           },
         },
         "required": [
-          "title",
           "products",
         ],
       },
