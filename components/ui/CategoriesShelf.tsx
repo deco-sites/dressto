@@ -36,8 +36,8 @@ function CategoriesShelf({ highlights = [], title }: Props) {
               class=""
               src={src}
               alt={alt}
-              width={2000}
-              height={3000}
+              width={445}
+              height={670}
             >
             </Image>
           </a>
