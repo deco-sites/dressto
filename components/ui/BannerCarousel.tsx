@@ -43,12 +43,13 @@ export interface Props {
 function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
   const {
     alt,
+    mobile,
     desktop,
     action,
   } = image;
 
   return (
-    <div class="relative h-[700px] min-w-[100vw] overflow-y-hidden">
+    <div class="relative min-w-[100vw] overflow-y-hidden">
       <a href={action?.href ?? "#"} aria-label={action?.label}>
         <Picture class="w-full" preload={lcp}>
           <Source
@@ -56,6 +57,13 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
             fetchPriority={lcp ? "high" : "auto"}
             src={desktop}
             width={1440}
+            height={600}
+          />
+          <Source
+            media="(max-width: 767px)"
+            fetchPriority={lcp ? "high" : "auto"}
+            src={mobile}
+            width={360}
             height={600}
           />
           <img
