@@ -48,7 +48,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
   } = image;
 
   return (
-    <div class="relative h-[600px] min-w-[100vw] overflow-y-hidden">
+    <div class="relative h-[700px] min-w-[100vw] overflow-y-hidden">
       <a href={action?.href ?? "#"} aria-label={action?.label}>
         <Picture class="w-full" preload={lcp}>
           <Source
@@ -66,9 +66,7 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
           />
         </Picture>
         {action && (
-          <div
-            class="absolute top-0 bottom-0 m-auto left-0 right-0 sm:right-auto sm:left-[12%] max-h-min max-w-[235px] flex flex-col gap-4 p-4 rounded"
-          >
+          <div class="absolute top-0 bottom-0 m-auto left-0 right-0 sm:right-auto sm:left-[12%] max-h-min max-w-[235px] flex flex-col gap-4 p-4 rounded">
             <Text variant="heading-1" tone="default-inverse">
               {action.title}
             </Text>

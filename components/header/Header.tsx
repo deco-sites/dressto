@@ -9,6 +9,7 @@ import Alert from "./Alert.tsx";
 import Navbar from "./Navbar.tsx";
 import { headerHeight } from "./constants.ts";
 import HeaderButton from "./Buttons.tsx";
+import { useState } from "preact/hooks";
 
 export interface NavItem {
   label: string;
@@ -65,10 +66,15 @@ function Header(
   }: Props,
 ) {
   const searchbar = { ..._searchbar, products, suggestions, configVTEX };
-
+  const [scrolled, setScrolled] = useState(false);
   return (
     <header class={`h-[${headerHeight}]`}>
-      <div class="w-full fixed z-50">
+      <div
+        class={scrolled
+          ? "w-full fixed z-50 bg-default"
+          : "w-full fixed z-50 bg-default"}
+        onScroll={() => setScrolled(true)}
+      >
         <Alert alerts={alerts} />
         <Navbar items={navItems} searchbar={searchbar} />
       </div>

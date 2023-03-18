@@ -24,20 +24,20 @@ function CategoriesShelfSecond({ highlights = [], title }: Props) {
       </h2>
 
       <Slider
-        class=""
-        snap="snap-center sm:snap-start block first:ml-6 sm:first:ml-0 last:mr-6 sm:last:mr-0"
+        class="mx-auto block gap-6 col-span-full row-start-2 row-end-5"
+        snap="snap-center block sm:first:ml-0  sm:last:mr-0"
       >
         {highlights.map(({ href, src, alt, label }) => (
           <a
             href={href}
-            class="flex flex-col relative items-center min-w-[320px]"
+            class="mx-auto p-4 bg-cover object-contain"
           >
             <Image
-              class=""
+              class="object-contain overflow-hidden"
               src={src}
               alt={alt}
-              width={2000}
-              height={3000}
+              width={300}
+              height={600}
             >
             </Image>
           </a>
