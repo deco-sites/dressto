@@ -60,13 +60,21 @@ const Modal = ({
     <dialog
       {...props}
       ref={ref}
-      class={`bg-transparent p-0 m-0 max-w-full sm:max-w-lg w-11/12 max-h-full h-full backdrop ${variant} ${
-        props.class ?? ""
-      }`}
+      class={title === "Buscar"
+        ? `bg-transparent p-0 m-0 max-w-full sm:max-w-lg w-full max-h-full h-full backdrop ${variant} ${
+          props.class ?? ""
+        } `
+        : `bg-transparent p-0 m-0 max-w-full sm:max-w-lg w-11/12 max-h-full h-full backdrop ${variant} ${
+          props.class ?? ""
+        }`}
       onClick={(e) =>
         (e.target as HTMLDialogElement).tagName === "DIALOG" && onClose?.()}
     >
-      <section class="pt-5 h-full bg-default flex flex-col px-2 ">
+      <section
+        class={title === "Buscar"
+          ? "pt-5 h-full bg-default opacity-90 flex flex-col px-2"
+          : "pt-5 h-full bg-default flex flex-col px-2"}
+      >
         <header class="flex px-4 justify-between items-start pb-3 border-b-1 border-default">
           <h1>
             <Text variant="heading-2">{title}</Text>
