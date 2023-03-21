@@ -1031,9 +1031,14 @@ const manifest: DecoManifest = {
             "type": "string",
             "title": "Page",
           },
+          "title": {
+            "type": "string",
+            "title": "Title",
+          },
         },
         "required": [
           "page",
+          "title",
         ],
       },
       "outputSchema": null,
