@@ -25,11 +25,13 @@ function Item({ name, item }: { name?: string; item?: string }) {
 function Breadcrumb({ itemListElement = [] }: Props) {
   return (
     <ul class="flex flex-row gap-2 items-center w-full">
+      <span class="text-yellow-600 text-xl">•</span>
       <Item name="Home" item="/" />
       {itemListElement.map((item) => (
         <>
           <li class="mt-0.5">
-            <Icon id="ChevronRight" width={16} height={16} strokeWidth={2} />
+            {/* <Icon id="ChevronRight" width={16} height={16} strokeWidth={2} /> */}
+            |
           </li>
           <Item {...item} />
         </>

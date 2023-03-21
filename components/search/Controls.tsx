@@ -9,6 +9,7 @@ import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
 import { useSignal } from "@preact/signals";
 import type { ProductListingPage } from "deco-sites/std/commerce/types.ts";
 import type { LoaderReturnType } from "$live/types.ts";
+import { useState } from "preact/hooks";
 
 export interface Props {
   page: LoaderReturnType<ProductListingPage | null>;
@@ -25,28 +26,55 @@ function Controls(
   const open = useSignal(false);
   const filters = page?.filters;
   const breadcrumb = page?.breadcrumb;
+  const [colsShowing, setColsShowing] = useState(0);
 
   return (
     <>
-      <div class="flex w-full justify-center min-w-full my-10">
-        <Text variant="heading-2" class="block font-bold">Vestidos</Text>
+      <div class="flex w-full justify-center min-w-full my-10 lg:justify-start lg:px-10 lg:my-0 lg:mt-16">
+        <Text variant="heading-1" class="block">vestidos</Text>
       </div>
       <Container class="mx-0 flex flex-row justify-between  mb-4 md:mb-0 px-10 sm:gap-4 sm:flex-row sm:h-[53px]  w-full min-w-full">
         <div class="flex items-center sm:p-0 mb-2">
           <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
         </div>
-        <div class="flex flex-row sm:gap-4 items-center justify-between border-b-1 border-default md:border-none">
+        <div class="flex flex-row sm:gap-4 items-center justify-between border-b-1 border-default md:border-none gap-2">
           <Button
-            variant="tertiary"
+            variant="secondary"
+            class="p-5"
             onClick={() => {
               open.value = true;
             }}
           >
-            Ordenar
-            <Icon id="FilterList" width={16} height={16} />
+            Filtrar
           </Button>
+          <span class="sm:hidden md:hidden lg:inline ">
+            <Sort />
+          </span>
+          <div class="border-1 border-default h-[40px] w-[89px] flex justify-center">
+            <Button
+              variant="icon"
+              class={colsShowing === 3 ? "text-yellow-500" : ""}
+              onClick={() => {
+                setColsShowing(3);
+              }}
+            >
+              3
+            </Button>
+            <span class="self-center pb-1">|</span>
+            <Button
+              variant="icon"
+              class={colsShowing === 4 ? "text-yellow-500" : ""}
+              onClick={() => {
+                setColsShowing(4);
+              }}
+            >
+              4
+            </Button>
+          </div>
         </div>
-        <Sort />
+        <span class="lg:hidden">
+          <Sort />
+        </span>
 
         <Modal
           title="Filtrar"
