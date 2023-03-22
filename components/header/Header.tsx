@@ -71,8 +71,8 @@ function Header(
     <header class={`h-[${headerHeight}]`}>
       <div
         class={scrolled
-          ? "w-full fixed z-50 bg-default"
-          : "w-full fixed z-50 bg-default"}
+          ? "w-full fixed z-50"
+          : "w-full fixed z-50"}
         onScroll={() => setScrolled(true)}
       >
         <Alert alerts={alerts} />
