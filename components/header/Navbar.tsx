@@ -37,7 +37,11 @@ function Navbar({ items, searchbar }: {
       {/* Desktop Version */}
       <div class="hidden bg-transparent transition-all hover:bg-white lg:flex flex-row justify-between items-center w-full pl-2 pr-3">
         <div class="flex-none w-44">
-          <a href="/" aria-label="Store logo" class="block text-white px-4 py-3 w-[160px]">
+          <a
+            href="/"
+            aria-label="Store logo"
+            class="block text-white px-4 py-3 w-[160px]"
+          >
             <Icon id="Logo" width={126} height={16} />
           </a>
         </div>
