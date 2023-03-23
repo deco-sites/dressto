@@ -33,8 +33,8 @@ function Controls(
       <div class="flex w-full justify-center min-w-full my-10 lg:justify-start lg:px-10 lg:my-0 lg:mt-16">
         <Text variant="heading-1" class="block">vestidos</Text>
       </div>
-      <Container class="mx-0 flex flex-row justify-between  mb-4 md:mb-0 px-10 sm:gap-4 sm:flex-row sm:h-[53px]  w-full min-w-full">
-        <div class="flex items-center sm:p-0 mb-2">
+      <Container class="mx-0 flex flex-row justify-between  mb-4 md:mb-0 lg:px-10 px-5 sm:gap-4 sm:flex-row sm:h-[53px]  w-full min-w-full">
+        <div class="items-center  sm:p-0 mb-2 hidden lg:flex">
           <Breadcrumb itemListElement={breadcrumb?.itemListElement} />
         </div>
         <div class="flex flex-row sm:gap-4 items-center justify-between border-b-1 border-default md:border-none gap-2">
@@ -47,10 +47,10 @@ function Controls(
           >
             Filtrar
           </Button>
-          <span class="sm:hidden md:hidden lg:inline ">
+          <span class="hidden lg:inline ">
             <Sort />
           </span>
-          <div class="border-1 border-default h-[40px] w-[89px] flex justify-center">
+          <div class="border-1 border-default h-[40px] w-[89px] hidden lg:flex justify-center">
             <Button
               variant="icon"
               class={colsShowing === 3 ? "text-yellow-500" : ""}
@@ -75,6 +75,27 @@ function Controls(
         <span class="lg:hidden">
           <Sort />
         </span>
+        <div class="border-1 border-default h-[40px] w-[89px] flex lg:hidden justify-center">
+          <Button
+            variant="icon"
+            class={colsShowing === 3 ? "text-yellow-500" : ""}
+            onClick={() => {
+              setColsShowing(3);
+            }}
+          >
+            3
+          </Button>
+          <span class="self-center pb-1">|</span>
+          <Button
+            variant="icon"
+            class={colsShowing === 4 ? "text-yellow-500" : ""}
+            onClick={() => {
+              setColsShowing(4);
+            }}
+          >
+            4
+          </Button>
+        </div>
 
         <Modal
           title="Filtrar"

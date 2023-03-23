@@ -32,7 +32,7 @@ function Gallery(
   return (
     <>
       <Container class="lg:max-w-full px-6 lg:mx-auto sm:py-10">
-        <div class="relative grid sm:grid-cols-2 gap-2 sm:gap-0 items-center lg:grid-cols-4 lg:gap-10 ">
+        <div class="relative grid grid-cols-2 sm:grid-cols-2 gap-2 sm:gap-0 items-center lg:grid-cols-4 lg:gap-10 ">
           {page.products?.map((product, index) => (
             <div class="w-full list-none">
               <ProductCard product={product} preload={index === 0} />
