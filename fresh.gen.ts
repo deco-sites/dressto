@@ -1041,11 +1041,26 @@ const manifest: DecoManifest = {
             "type": "string",
             "title": "Footer Desc",
           },
+          "url": {
+            "type": "string",
+            "title": "Url",
+          },
+          "imageUrl": {
+            "type": "string",
+            "title": "Image Url",
+          },
+          "imageName": {
+            "type": "string",
+            "title": "Image Name",
+          },
         },
         "required": [
           "page",
           "footerTitle",
           "footerDesc",
+          "url",
+          "imageUrl",
+          "imageName",
         ],
       },
       "outputSchema": null,

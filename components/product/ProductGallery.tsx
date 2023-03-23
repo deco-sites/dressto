@@ -6,11 +6,15 @@ import Icon from "$store/components/ui/Icon.tsx";
 import type { LoaderReturnType } from "$live/types.ts";
 import type { ProductListingPage } from "deco-sites/std/commerce/types.ts";
 import { useState } from "preact/hooks";
+import ProductCategorieCard from "./ProductCategorieCard.tsx";
 
 export interface Props {
   page: LoaderReturnType<ProductListingPage | null>;
   footerTitle: string;
   footerDesc: string;
+  url: string;
+  imageUrl: string;
+  imageName: string;
 }
 
 function NotFound() {
@@ -22,10 +26,13 @@ function NotFound() {
 }
 
 function Gallery(
-  { page, footerTitle, footerDesc }: {
+  { page, footerTitle, footerDesc, url, imageUrl, imageName }: {
     page: ProductListingPage;
     footerTitle: string;
     footerDesc: string;
+    url: string;
+    imageUrl: string;
+    imageName: string;
   },
 ) {
   const [showMore, setShowMore] = useState(false);
@@ -33,6 +40,27 @@ function Gallery(
     <>
       <Container class="lg:max-w-full px-6 lg:mx-auto sm:py-10">
         <div class="relative grid grid-cols-2 sm:grid-cols-2 gap-2 sm:gap-0 items-center lg:grid-cols-4 lg:gap-10 ">
+          <div class="w-full list-none col-span-2 row-start-2 ">
+            <ProductCategorieCard
+              url={url}
+              imageUrl={imageUrl}
+              imageName={imageName}
+            />
+          </div>
+          <div class="w-full list-none col-span-2 row-start-4 col-start-3">
+            <ProductCategorieCard
+              url={url}
+              imageUrl={imageUrl}
+              imageName={imageName}
+            />
+          </div>
+          <div class="w-full list-none col-span-2 row-start-6">
+            <ProductCategorieCard
+              url={url}
+              imageUrl={imageUrl}
+              imageName={imageName}
+            />
+          </div>
           {page.products?.map((product, index) => (
             <div class="w-full list-none">
               <ProductCard product={product} preload={index === 0} />
@@ -73,13 +101,22 @@ function Gallery(
   );
 }
 
-function ProductGallery({ page, footerTitle, footerDesc }: Props) {
+function ProductGallery(
+  { page, footerTitle, footerDesc, url, imageUrl, imageName }: Props,
+) {
   if (!page) {
     return <NotFound />;
   }
 
   return (
-    <Gallery page={page} footerTitle={footerTitle} footerDesc={footerDesc} />
+    <Gallery
+      page={page}
+      footerTitle={footerTitle}
+      footerDesc={footerDesc}
+      url={url}
+      imageUrl={imageUrl}
+      imageName={imageName}
+    />
   );
 }
 
