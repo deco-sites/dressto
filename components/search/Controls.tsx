@@ -113,7 +113,7 @@ function Controls(
 }
 
 function SearchControls({ page, title }: Props) {
-  if (!page || !page.filters || page.filters.length === 0) {
+  if (!page) {
     return <NotFound />;
   }
 
