@@ -40,21 +40,21 @@ function Gallery(
     <>
       <Container class="lg:max-w-full px-6 lg:mx-auto sm:py-10">
         <div class="relative grid grid-cols-2 sm:grid-cols-2 gap-2 sm:gap-0 items-center lg:grid-cols-4 lg:gap-10 ">
-          <div class="w-full list-none col-span-2 row-start-2 ">
+          <div class="w-full list-none row-start-3 col-span-2 lg:col-span-2 lg:row-start-2 ">
             <ProductCategorieCard
               url={url}
               imageUrl={imageUrl}
               imageName={imageName}
             />
           </div>
-          <div class="w-full list-none col-span-2 row-start-4 col-start-3">
+          <div class="w-full list-none row-start-8 col-span-2 lg:col-span-2 lg:row-start-4 lg:col-start-3">
             <ProductCategorieCard
               url={url}
               imageUrl={imageUrl}
               imageName={imageName}
             />
           </div>
-          <div class="w-full list-none col-span-2 row-start-6">
+          <div class="w-full list-none row-start-12 col-span-2 lg:col-span-2 lg:row-start-6">
             <ProductCategorieCard
               url={url}
               imageUrl={imageUrl}
