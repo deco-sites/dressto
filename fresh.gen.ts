@@ -1033,9 +1033,19 @@ const manifest: DecoManifest = {
             "type": "string",
             "title": "Page",
           },
+          "footerTitle": {
+            "type": "string",
+            "title": "Footer Title",
+          },
+          "footerDesc": {
+            "type": "string",
+            "title": "Footer Desc",
+          },
         },
         "required": [
           "page",
+          "footerTitle",
+          "footerDesc",
         ],
       },
       "outputSchema": null,

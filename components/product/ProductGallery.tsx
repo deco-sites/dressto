@@ -5,9 +5,12 @@ import Text from "$store/components/ui/Text.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import type { LoaderReturnType } from "$live/types.ts";
 import type { ProductListingPage } from "deco-sites/std/commerce/types.ts";
+import { useState } from "preact/hooks";
 
 export interface Props {
   page: LoaderReturnType<ProductListingPage | null>;
+  footerTitle: string;
+  footerDesc: string;
 }
 
 function NotFound() {
@@ -18,7 +21,14 @@ function NotFound() {
   );
 }
 
-function Gallery({ page }: { page: ProductListingPage }) {
+function Gallery(
+  { page, footerTitle, footerDesc }: {
+    page: ProductListingPage;
+    footerTitle: string;
+    footerDesc: string;
+  },
+) {
+  const [showMore, setShowMore] = useState(false);
   return (
     <>
       <Container class="lg:max-w-full px-6 lg:mx-auto sm:py-10">
@@ -48,17 +58,14 @@ function Gallery({ page }: { page: ProductListingPage }) {
       </Container>
       <div class="flex flex-col w-full min-w-full items-center justify-center">
         <div class="py-6">
-          <Text variant="heading-2" class="font-bold">Calças</Text>
+          <Text variant="heading-2" class="font-bold">
+            title: {footerTitle}
+          </Text>
         </div>
-        <div class="px-3 mb-24">
+        <div class="px-3 lg:px-48 mb-24">
+          desc:
           <p>
-            Essenciais em qualquer guarda-roupa feminino, calça é um item
-            confortável e prático. Vestir-se com uma calça jeans ou calça de
-            alfaiataria mostra a sua personalidade, e aqui na categoria de
-            calças da Dress to, você vai encontrar o modelo perfeito para
-            representar o seu estilo. Você vai encontrar modelos de calça baggy,
-            calça mom, pantalona, pantacourt, skinny, wide leg, em cores
-            variadas, lisa, c
+            {footerDesc}
           </p>
         </div>
       </div>
@@ -66,12 +73,14 @@ function Gallery({ page }: { page: ProductListingPage }) {
   );
 }
 
-function ProductGallery({ page }: Props) {
+function ProductGallery({ page, footerTitle, footerDesc }: Props) {
   if (!page) {
     return <NotFound />;
   }
 
-  return <Gallery page={page} />;
+  return (
+    <Gallery page={page} footerTitle={footerTitle} footerDesc={footerDesc} />
+  );
 }
 
 export default ProductGallery;
