@@ -25,24 +25,66 @@ function CategoriesShelfSecond({ highlights = [], title }: Props) {
 
       {/* Mobile Version mx-auto block gap-6 col-span-full row-start-2 row-end-5 */}
       <Slider
-        class="lg:hidden block min-w-full w-full mx-4"
+        class="lg:hidden block  mx-4"
         snap="snap-center block sm:first:ml-0  sm:last:mr-0"
       >
-        {highlights.map(({ href, src, alt, label }) => (
-          <a
-            href={href}
-            class=" p-4 bg-cover object-contain"
+        <a
+          href={highlights[0].href}
+          class="mx-5 bg-cover object-contain"
+        >
+          <Image
+            class="object-contain overflow-hidden"
+            src={highlights[0].src}
+            alt={highlights[0].alt}
+            width={915}
+            height={1250}
           >
-            <Image
-              class="object-contain overflow-hidden"
-              src={src}
-              alt={alt}
-              width={915}
-              height={1250}
-            >
-            </Image>
-          </a>
-        ))}
+          </Image>
+        </a>
+        <a
+          href={highlights[1].href}
+          class="mx-5 bg-cover object-contain"
+        >
+          <Image
+            class="object-contain overflow-hidden"
+            src={highlights[1].src}
+            alt={highlights[1].alt}
+            width={915}
+            height={1250}
+          >
+          </Image>
+        </a>
+        <a
+          href={highlights[2].href}
+          class="mx-5 bg-cover object-contain"
+        >
+          <Image
+            class="object-contain overflow-hidden"
+            src={highlights[2].src}
+            alt={highlights[2].alt}
+            width={867}
+            height={477}
+          >
+          </Image>
+        </a>
+      </Slider>
+      <Slider
+        class="lg:hidden block min-w-full w-full"
+        snap="snap-center block sm:first:ml-0  sm:last:mr-0"
+      >
+        <a
+          href={highlights[3].href}
+          class="my-5 min-w-full w-full bg-cover object-contain"
+        >
+          <Image
+            class="object-contain overflow-hidden"
+            src={highlights[3].src}
+            alt={highlights[3].alt}
+            width={888}
+            height={370}
+          >
+          </Image>
+        </a>
       </Slider>
       {/* Desktop Version */}
       <div class="hidden lg:flex flex-col min-w-full w-full">
