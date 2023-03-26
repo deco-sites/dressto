@@ -10,13 +10,13 @@ interface Props {
 function VariantSelector({ product }: Props) {
   const possibilities = useVariantPossibilities(product);
   const { url: currentUrl } = product;
-
+  
   return (
     <ul class="flex flex-col gap-4">
       {Object.keys(possibilities).map((name) => (
-        <li class="flex flex-col gap-2">
+        <li class="flex flex-row gap-2 items-center">
           <Text variant="caption">{name}</Text>
-          <ul class="flex flex-row gap-2">
+          <ul class="flex flex-row gap-2 ml-8">
             {Object.entries(possibilities[name]).map(([url, value]) => (
               <li>
                 <a href={url}>
@@ -24,7 +24,7 @@ function VariantSelector({ product }: Props) {
                     // deno-lint-ignore no-explicit-any
                     content={value as any}
                     disabled={url === currentUrl}
-                    variant={name === "COR" ? "color" : "abbreviation"}
+                    variant={name === "Cor" ? "color" : "abbreviation"}
                   />
                 </a>
               </li>
