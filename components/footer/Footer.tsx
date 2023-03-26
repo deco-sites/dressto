@@ -24,7 +24,7 @@ const isIcon = (item: Item): item is IconItem =>
 
 function SectionItem({ item }: { item: Item }) {
   return (
-    <Text variant="caption" tone="default-inverse">
+    <Text class="text-black" variant="caption" tone="default-inverse">
       {isIcon(item)
         ? (
           <div class="border-default border-1 py-1.5 px-2.5">
@@ -60,20 +60,16 @@ export interface Props {
 
 function Footer({ sections = [] }: Props) {
   return (
-    <footer class="w-full bg-footer flex flex-col divide-y-1 divide-default">
+    <footer class="w-full border-t-1 border-default bg-white flex flex-col">
       <div>
-        <Container class="w-full flex flex-col divide-y-1 divide-default">
-          <FooterContainer>
-            <Newsletter />
-          </FooterContainer>
-
+        <Container class="w-full flex flex-col">
           <FooterContainer>
             {/* Desktop view */}
-            <ul class="hidden sm:flex flex-row gap-20">
+            <ul class="hidden sm:flex flex-row gap-60">
               {sections.map((section) => (
                 <li>
                   <div>
-                    <Text variant="heading-3" tone="default-inverse">
+                    <Text class="text-black" variant="heading-3" tone="default-inverse">
                       {section.label}
                     </Text>
 
@@ -91,13 +87,14 @@ function Footer({ sections = [] }: Props) {
                   </div>
                 </li>
               ))}
+              <Newsletter />
             </ul>
 
             {/* Mobile view */}
-            <ul class="flex flex-col sm:hidden sm:flex-row gap-4">
+            <ul class="flex text-black flex-col sm:hidden sm:flex-row gap-4">
               {sections.map((section) => (
                 <li>
-                  <Text variant="body" tone="default-inverse">
+                  <Text class="text-black" variant="body" tone="default-inverse">
                     <details>
                       <summary>
                         {section.label}
@@ -126,30 +123,16 @@ function Footer({ sections = [] }: Props) {
       <div>
         <Container class="w-full">
           <FooterContainer class="flex justify-between w-full">
-            <Text
-              class="flex items-center gap-1"
-              variant="body"
-              tone="default-inverse"
-            >
-              Powered by{" "}
-              <a
-                href="https://www.deco.cx"
-                aria-label="powered by https://www.deco.cx"
-              >
-                <Icon id="Deco" height={20} width={60} strokeWidth={0.01} />
-              </a>
-            </Text>
-
             <ul class="flex items-center justify-center gap-2">
               <li>
                 <a
-                  href="https://www.instagram.com/deco.cx"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Instagram logo"
                 >
                   <Icon
-                    class="text-default-inverse"
+                    class="text-default-inverse text-black"
                     width={32}
                     height={32}
                     id="Instagram"
@@ -159,17 +142,17 @@ function Footer({ sections = [] }: Props) {
               </li>
               <li>
                 <a
-                  href="http://www.deco.cx/discord"
+                  href="#"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Discord logo"
+                  aria-label="Instagram logo"
                 >
                   <Icon
-                    class="text-default-inverse"
+                    class="text-default-inverse text-black"
                     width={32}
                     height={32}
-                    id="Discord"
-                    strokeWidth={5}
+                    id="Facebook"
+                    strokeWidth={1}
                   />
                 </a>
               </li>
