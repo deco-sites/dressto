@@ -35,7 +35,7 @@ function ProductShelf({
       </h2>
 
       <Slider
-        class="block gap-6 col-span-full row-start-2 row-end-5"
+        class="gap-6 col-span-full row-start-2 row-end-5"
         snap="snap-center sm:snap-start block sm:first:ml-0  sm:last:mr-0"
       >
         {products?.map((product) => (

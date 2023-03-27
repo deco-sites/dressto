@@ -16,7 +16,7 @@ function Navbar({ items, searchbar }: {
     <>
       {/* Mobile Version */}
       <div
-        class={`bg-transparent lg:hidden flex flex-row justify-between items-center h-[${navbarHeight}] w-full px-2 gap-2`}
+        class={`z-50 bg-transparent lg:hidden flex flex-row justify-between items-center h-[${navbarHeight}] w-full px-2 gap-2`}
       >
         <HeaderButton variant="menu" />
 
@@ -35,7 +35,7 @@ function Navbar({ items, searchbar }: {
       </div>
 
       {/* Desktop Version */}
-      <div class="hidden bg-transparent transition-all hover:bg-white lg:flex flex-row justify-between items-center w-full pl-2 pr-3">
+      <div class="z-50 hidden bg-transparent transition-all hover:bg-white lg:flex flex-row justify-between items-center w-full pl-2 pr-3">
         <div class="flex-none w-44">
           <a
             href="/"

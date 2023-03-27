@@ -62,14 +62,18 @@ function Footer({ sections = [] }: Props) {
   return (
     <footer class="w-full border-t-1 border-default bg-white flex flex-col">
       <div>
-        <Container class="w-full flex flex-col">
+        <Container class="w-full flex flex-col md:ml-10">
           <FooterContainer>
             {/* Desktop view */}
             <ul class="hidden sm:flex flex-row gap-60">
               {sections.map((section) => (
                 <li>
                   <div>
-                    <Text class="text-black" variant="heading-3" tone="default-inverse">
+                    <Text
+                      class="text-black"
+                      variant="heading-3"
+                      tone="default-inverse"
+                    >
                       {section.label}
                     </Text>
 
@@ -94,7 +98,11 @@ function Footer({ sections = [] }: Props) {
             <ul class="flex text-black flex-col sm:hidden sm:flex-row gap-4">
               {sections.map((section) => (
                 <li>
-                  <Text class="text-black" variant="body" tone="default-inverse">
+                  <Text
+                    class="text-black"
+                    variant="body"
+                    tone="default-inverse"
+                  >
                     <details>
                       <summary>
                         {section.label}

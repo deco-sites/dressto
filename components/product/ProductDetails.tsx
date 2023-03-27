@@ -9,9 +9,12 @@ import { useOffer } from "$store/sdk/useOffer.ts";
 import { formatPrice } from "$store/sdk/format.ts";
 import type { LoaderReturnType } from "$live/types.ts";
 import type { ProductDetailsPage } from "deco-sites/std/commerce/types.ts";
-
+import { useId } from "preact/hooks";
 import ProductSelector from "./ProductVariantSelector.tsx";
 import QuantitySelector from "../ui/QuantitySelector.tsx";
+import BannerCarousel from "../ui/BannerCarousel.tsx";
+import Slider from "$store/components/ui/Slider.tsx";
+import SliderControllerJS from "$store/islands/SliderJS.tsx";
 
 export interface Props {
   page: LoaderReturnType<ProductDetailsPage | null>;
@@ -45,11 +48,13 @@ function Details({ page }: { page: ProductDetailsPage }) {
   } = product;
   const { price, listPrice, seller, installments } = useOffer(offers);
   const [front, back] = images ?? [];
+  const id = useId();
 
   return (
-    <div class="py-0 sm:py-10">
-      <div class="flex justify-between">
-        <div class="w-full">
+    <div class="z-40 py-0 sm:py-10 w-full min-w-full">
+      <div class="flex flex-col items-center lg:items-start lg:grid lg:grid-cols-2  ">
+        {
+          /* <div class="w-full">
           {images && (
             <Image
               style={{ aspectRatio: "360 / 500" }}
@@ -63,28 +68,78 @@ function Details({ page }: { page: ProductDetailsPage }) {
               loading={"eager"}
             />
           )}
-        </div>
-        {/* fazer um map de imagens aqui */}
-        {
-          /* <div class="flex flex-row overflow-auto snap-x snap-mandatory scroll-smooth sm:gap-2">
+        </div> */
+        }
+
+        <Container
+          id={id}
+          class="lg:hidden py-10 px-0 sm:px-5 grid grid-cols-[48px_1fr_48px] grid-rows-[48px_1fr_48px_1fr]"
+        >
+          <Slider
+            class="grid gap-6 col-span-full grid-cols-1 row-start-2 row-end-5 "
+            snap="snap-center sm:snap-start block sm:first:ml-0  sm:last:mr-0"
+          >
+            {[front, back ?? front].map((img, index) => (
+              <Image
+                style={{ aspectRatio: "360 / 500" }}
+                class="snap-center"
+                sizes="100vw, 30vw"
+                src={img.url!}
+                alt={img.alternateName}
+                width={934}
+                height={1401}
+                // Preload LCP image for better web vitals
+                preload={index === 0}
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+            ))}
+          </Slider>
+
+          <>
+            <div class="hidden relative sm:block z-10 col-start-1 row-start-3">
+              <div class="absolute right-1/2 bg-interactive-inverse rounded-full border-default border">
+                <Button
+                  variant="icon"
+                  data-slide="prev"
+                  aria-label="Previous item"
+                >
+                  <Icon size={20} id="ChevronLeft" strokeWidth={3} />
+                </Button>
+              </div>
+            </div>
+            <div class="hidden relative sm:block z-10 col-start-3 row-start-3">
+              <div class="absolute left-1/2 bg-interactive-inverse rounded-full border-default border">
+                <Button variant="icon" data-slide="next" aria-label="Next item">
+                  <Icon size={20} id="ChevronRight" strokeWidth={3} />
+                </Button>
+              </div>
+            </div>
+          </>
+
+          <SliderControllerJS rootId={id} />
+        </Container>
+
+        <div class="hidden lg:inline overflow-auto snap-x snap-mandatory scroll-smooth">
           {[front, back ?? front].map((img, index) => (
             <Image
               style={{ aspectRatio: "360 / 500" }}
-              class="snap-center min-w-[100vw] sm:min-w-0 sm:w-auto sm:h-[600px]"
+              class={index === 0
+                ? " snap-center col-span-1 row-span-1"
+                : "snap-center col-span-1 row-span-1"}
               sizes="100vw, 30vw"
               src={img.url!}
               alt={img.alternateName}
-              width={360}
-              height={500}
+              width={951}
+              height={1427}
               // Preload LCP image for better web vitals
               preload={index === 0}
               loading={index === 0 ? "eager" : "lazy"}
             />
           ))}
-        </div> */
-        }
+        </div>
+
         {/* Product Info */}
-        <div class="flex-auto w-full">
+        <div class="lg:col-span-1 lg:row-start-1 lg:col-start-2 flex-auto ">
           <div class="w-[28rem] mx-auto mt-16">
             {/* Breadcrumb */}
             <Breadcrumb
@@ -133,10 +188,14 @@ function Details({ page }: { page: ProductDetailsPage }) {
             {/* Sku Selector */}
             <div class="mt-4 sm:mt-6">
               {/* Colocar para receber cor em vez de tamanho */}
-              <ProductSelector product={product} />
+              <ProductSelector product={product} selectorType="cor" />
             </div>
             <div class="mt-4 sm:mt-6">
-              <ProductSelector product={product} />
+              <ProductSelector product={product} selectorType="tamanho" />
+            </div>
+            <div class="mt-4 sm:mt-6">
+              <Text class="pr-10">Provador Virtual</Text>
+              <Text>Tabela de Medidas</Text>
             </div>
             {/* Add to Cart and Favorites button */}
             <div class="mt-4 sm:mt-10 flex flex-row gap-2">
@@ -226,6 +285,9 @@ function Details({ page }: { page: ProductDetailsPage }) {
         </div>
       </div>
       {/* Adicionar product shelf aqui */}
+      <div>
+        <BannerCarousel />
+      </div>
     </div>
   );
 }
